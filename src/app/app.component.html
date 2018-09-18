@@ -1,0 +1,104 @@
+<div class=”container”>
+    
+    <div class="reglist">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+    <th>#</th>
+    <th>User</th>
+    <th>UserName</th>
+    <th>email</th>
+    <th><tr colspan="4">Address</tr><tr><th style="width:25%">street</th><th style="width:20%">suite</th><th  style="width:30%" >city</th><th style="width:25%">zipcode</th></tr></th>
+    <th>phone</th>
+    <th>website</th>
+    <th>company</th>
+    <th></th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reg of regs; let i = index">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ reg.name }}</td>
+    <td>{{ reg.username }}</td>
+    <td>{{ reg.email}}</td>
+    <th><tr><th style="width:25%">{{reg.address.street}}</th><th style="width:20%">{{reg.address.suite}}</th><th style="width:30%">{{reg.address.city}}</th><th style="width:25%">{{reg.address.zipcode}}</th></tr></th>
+    <td>{{ reg.phone }}</td>
+    <td>{{ reg.website }}</td>
+    <td>{{ reg.company }}</td>
+    <td>
+    <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+    </td>
+    <td>
+    <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+
+    <div class="btn btn-success">
+            <button type="submit" class="btn btn-success" (click)="onNew()">New</button>
+        </div>
+
+    <div class="regentry" >
+            <form (ngSubmit)="onSave()">
+            </form>
+            
+    <br>
+    </div>
+
+    <div class="form-group row">
+        <label for="name-input" class="col-2 col-form-label">Name : </label>
+        <div class="col-10">
+        <input class="form-control" type="text" [(ngModel)]="memberModel.name" name="name">
+        </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="userName-input" class="col-2 col-form-label">UserName : </label>
+            <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="memberModel.username" name="username">
+            </div>
+            </div>
+        
+            <div class="form-group row">
+                <label for="example-email-input" class="col-2 col-form-label">Email : </label>
+                <div class="col-10">
+                <input class="form-control" type="email" [(ngModel)]="memberModel.email" name="email">
+                </div>
+                </div>
+
+                    <div class="form-group row">
+                        <label for="adresse-input" class="col-2 col-form-label">adresse: </label>
+                        <div class="col-10">
+                        <input class="form-control" type="text" [(ngModel)]="memberModel.address" name="address">
+                        </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone-input" class="col-2 col-form-label">phone : </label>
+                            <div class="col-10">
+                            <input class="form-control" type="text" [(ngModel)]="memberModel.phone" name="phone">
+                            </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="website-input" class="col-2 col-form-label">website : </label>
+                                <div class="col-10">
+                                <input class="form-control" type="text" [(ngModel)]="memberModel.website" name="website">
+                                </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="company-input" class="col-2 col-form-label">company : </label>
+                                    <div class="col-10">
+                                    <input class="form-control" type="text" [(ngModel)]="memberModel.company" name="company">
+                                    </div>
+                                    </div>
+
+
+
+
+                                    <button type="submit" class="btn btn-success">{{submitType}}</button>
+                                    <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+                                </div>
